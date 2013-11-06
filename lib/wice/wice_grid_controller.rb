@@ -114,9 +114,9 @@ module Wice
         template_name ||= grid.name + '_grid'
         temp_filename = render_to_string(:partial => template_name)
         temp_filename = temp_filename.strip
-        filename = (grid.csv_file_name || grid.name ) + '.csv'
+        filename = (grid.csv_file_name || grid.name ) + '.xls'
         grid.csv_tempfile.close
-        send_file_rails2 temp_filename, :filename => filename, :type => 'text/csv; charset=utf-8'
+        send_file_rails2 temp_filename, :filename => filename, :type => 'application/vnd.ms-excel; charset=UTF8'
         grid.csv_tempfile = nil
         true
       else
